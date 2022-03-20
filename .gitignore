@@ -1,6 +1,9 @@
 *.box
 .vagrant
 Vagrantfile
+.provision.sh.*
+.Vagrantfile.*
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
