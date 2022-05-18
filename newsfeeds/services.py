@@ -4,7 +4,8 @@ from friendships.services import FriendshipService
 
 class NewsFeedService:
 
-    def fanout_to_followers(self, tweet):
+    @classmethod
+    def fanout_to_followers(cls, tweet):
         # followers = FriendshipService.get_followers(tweet.user)
         # 不可以将数据库操作放在for循环里面，效率会非常低
         # for follower in followers:
@@ -14,7 +15,7 @@ class NewsFeedService:
             for follower in FriendshipService.get_followers(tweet.user)
         ]
         newsfeeds.append(NewsFeed(user=tweet.user, tweet=tweet))
-        NewsFeed.object.bulk_create(newsfeeds)
+        NewsFeed.objects.bulk_create(newsfeeds)
 
 
 
